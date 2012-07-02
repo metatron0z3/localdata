@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -446,7 +449,30 @@ pre
       
       <input type="text" id="userInput" style="width:160px;" /><input id="write_to_local" type="button" value="write this to localdata" style="cursor:pointer; margin-left:10px;" />
 
-      <pre id="result"></pre></td>
+      <pre id="result">
+  
+      </pre>
+      <h3>PHP: Sample usage for localdata.php</h3>
+      <p><strong>Include</strong> - include('localdata.php'); <br />
+      <p><strong>Create Object</strong> - $localdata = localdata::get(); <br />
+      <p><strong>Store</strong> - $localdata("name", "value"); or  $localdata->name = "value";<br />
+      value can be integer, string, object, array <br />
+      $localdata("name", [1,2,3,4,5]); <br />
+      $localdata("name", {name: "John Dow", email: "john@company.com"}); </p><br />
+      <p><strong>Read</strong> - $localdata("name"); or $localdata->name</p>
+      <p><strong>Delete One Item By Key</strong> - $localdata->remove("name"); </p>
+      <p><strong>Delete entire cookie</strong> - $localdata->clear(); </p>
+      <p><strong>Count Stored Items</strong> - $localdata->count(); </p>
+      <p><strong>Get/Set cookie configuration</strong> - $localdata->config() and $localdata->config(Array('expires' => 'in days', 'path' => 'your new path', 'domain' => 'domain', 'secure' => true or false}) defaults are 'expires' => 365, 'path' => '/', 'domain' => NULL, 'secure' => NULL</p>
+      <p><strong>Get/Set cookie prefix</strong> - $localdata->prefix() and $localdata->prefix("new_prefix_") default is "localdata_cookie_" </p>
+      <pre id="result">
+  <?php
+  include('localdata.php');
+  $localdata = localdata::get();
+  print_r( $localdata("master_object") );
+  ?>
+      </pre>
+      </td>
     </tr>
 </table>
 </div>
@@ -557,3 +583,6 @@ $(function()
 </script>
 </body>
 </html>
+<?php
+ob_end_flush();
+?>
