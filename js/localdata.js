@@ -1,7 +1,26 @@
-/**
+/*
+ * localdata.js
+ *
  * @author Pavel Kukov
  * 
- * date: 2012-07-02
+ * date: 2012-07-02 18:38:31
+ *
+ *
+ *	Sample usage for localdata.js 
+ *	
+ *	Store - $.localdata("name", "value"); 
+ *	value can be integer, string, object, array 
+ *	$.localdata("name", [1,2,3,4,5]); 
+ *	$.localdata("name", {name: "John Dow", email: "john@company.com"}); 
+ *	
+ *	Read - $.localdata("name"); 
+ *	Delete One Item By Key - $.localdata.remove("name"); or $.localdata("name",null,{expires:-1}); 
+ *	Delete entire cookie - $.localdata.clear(); 
+ *	Count Stored Items - $.localdata.count(); 
+ *	Force Reload - $.localdata.reload(); 
+ *	Get/Set cookie configuration - $.localdata.config() and $.localdata.config({expires: 'in days', path: 'your new path', domain: 'domain', 'secure': true or false}) defaults are expires: 365, path: '/', domain: '', 'secure': '' 
+ *	Get/Set cookie prefix - $.localdata.prefix() and $.localdata.prefix("new_prefix_") default is "localdata_cookie_" 
+ *
  */
 (function($)
 {
@@ -15,6 +34,11 @@
 		expires : 365,
 		path : "/"
 	};
+	
+	if( typeof(jQuery.localdata) !== "undefined") 
+	{ 
+    	throw "jQuery.localdata is already defined"; 
+	}
 	//
 	jQuery.localdata = function()
 	{
@@ -140,6 +164,7 @@
 		{
 			delete localdata_obj[i];
 		}
+		
 		jQuery.localdata.save();
 	}
 
@@ -153,6 +178,42 @@
 		jQuery.localdata.save();
 		jQuery.localdata.load();
 		return saved_to_cookies;
+	}
+	
+	jQuery.localdata.set_config = function(cookie_params)
+	{
+		$.extend(defaultOptions, cookie_params);
+		
+		return defaultOptions;
+	}
+	
+	jQuery.localdata.get_config = function()
+	{
+		return defaultOptions;
+	}
+	
+	jQuery.localdata.config = function()
+	{
+		var args = arguments;
+		
+		if(args.length)
+		{
+			jQuery.localdata.set_config(args[0]);
+		}
+		
+		return defaultOptions;
+	}
+	
+	jQuery.localdata.prefix = function()
+	{
+		var args = arguments;
+		
+		if(args.length)
+		{
+			prefix = args[0].toString();
+		}
+		
+		return prefix;
 	}
 	
 	var str_split = function(string, split_length)

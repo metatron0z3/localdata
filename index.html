@@ -441,6 +441,8 @@ pre
       <p><strong>Delete entire cookie</strong> - $.localdata.clear(); </p>
       <p><strong>Count Stored Items</strong> - $.localdata.count(); </p>
       <p><strong>Force Reload</strong> - $.localdata.reload(); </p>
+      <p><strong>Get/Set cookie configuration</strong> - $.localdata.config() and $.localdata.config({expires: 'in days', path: 'your new path', domain: 'domain', 'secure': true or false}) defaults are expires: 365, path: '/', domain: '', 'secure': ''</p>
+      <p><strong>Get/Set cookie prefix</strong> - $.localdata.prefix() and $.localdata.prefix("new_prefix_") default is "localdata_cookie_" </p>
       
       <input type="text" id="userInput" style="width:160px;" /><input id="write_to_local" type="button" value="write this to localdata" style="cursor:pointer; margin-left:10px;" />
 
@@ -543,7 +545,9 @@ $(function()
 	
 	var read_str = dump($.localdata('master_object'));
 	
-	$("#result").html(read_str);
+	$.localdata.config({expires:182});
+	
+	$("#result").html("Localdata Config: \n"+(dump($.localdata.config()))+"\n $.localdata('master_object') = :\n"+read_str);
 	
 	$("#write_to_local").click(function(){
 		$.localdata('userinput', $("#userInput").attr("value"));
