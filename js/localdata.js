@@ -3,7 +3,7 @@
  *
  * @author Pavel Kukov
  * 
- * date: 2012-07-02 18:38:31
+ * date: 2012-07-02 18:41:11
  *
  *
  *	Sample usage for localdata.js 
