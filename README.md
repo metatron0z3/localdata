@@ -21,9 +21,9 @@ PHP: Sample usage for localdata.php
 * Create Object - $localdata = localdata::get();  
  
 * Store - $localdata("name", "value"); or $localdata->name = "value"; 
- value can be integer, string, object, array  
-$localdata("name", [1,2,3,4,5]);  
-$localdata("name", {name: "John Dow", email: "john@company.com"});  
+ value can be integer, string, array  
+$localdata("name", array(1,2,3,4,5));  
+$localdata("name", array("name" => "John Dow", "email" => "john@company.com"));  
  
 * Read - $localdata("name"); or $localdata->name 
 * Delete One Item By Key - $localdata->remove("name");  
