@@ -203,10 +203,5 @@ class localdata
 			setcookie($this->cookie_prefix."0", $this->cookie_string.'__END__', time() + (86400 * $this->cookie_default_options['expires']), $this->cookie_default_options['path'], $this->cookie_default_options['domain'], $this->cookie_default_options['secure']);
 		}
 	}
-
-	private function substr_unicode($str, $s, $l = null) {
-	     return join("", array_slice(
-	     preg_split("//u", $str, -1, PREG_SPLIT_NO_EMPTY), $s, $l));
-	}
 }
 ?>
