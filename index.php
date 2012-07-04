@@ -35,7 +35,7 @@ input:focus, textarea:focus, td:focus {
 }
 html, body {
 	font-family: "Century Gothic", CenturyGothic, "AppleGothic", "Avant Garde", Avantgarde, sans-serif;
-	font-size:14px;
+	font-size:16px;
 	margin:0;
 	padding:0;
 	overflow-y:scroll;
@@ -420,6 +420,14 @@ pre
 	clear:both;
 	margin:10px 0 0 0;
 }
+.mark
+{
+color:#1D5B7A;
+font-style:italic;
+font-size:14px;
+font-weight:bold;
+font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
 -->
 </style>
 </head>
@@ -432,43 +440,46 @@ pre
     </tr>
     <tr>
       <td>
-      <h3>Sample usage for localdata.js</h3>
+      <h2>Sample usage for localdata.js</h2>
  
-      <p><strong>Store</strong> - $.localdata("name", "value"); <br />
+      <p><strong>Store</strong> - <span class="mark">$.localdata("name", "value");</span> <br />
       value can be integer, string, object, array <br />
       $.localdata("name", [1,2,3,4,5]); <br />
       $.localdata("name", {name: "John Dow", email: "john@company.com"}); </p>
          
-      <p><strong>Read</strong> - $.localdata("name"); </p>
-      <p><strong>Delete One Item By Key</strong> - $.localdata.remove("name"); or $.localdata("name",null,{expires:-1}); </p>
-      <p><strong>Delete entire cookie</strong> - $.localdata.clear(); </p>
-      <p><strong>Count Stored Items</strong> - $.localdata.count(); </p>
-      <p><strong>Force Reload</strong> - $.localdata.reload(); </p>
-      <p><strong>Get/Set cookie configuration</strong> - $.localdata.config() and $.localdata.config({expires: 'in days', path: 'your new path', domain: 'domain', 'secure': true or false}) defaults are expires: 365, path: '/', domain: '', 'secure': ''</p>
-      <p><strong>Get/Set cookie prefix</strong> - $.localdata.prefix() and $.localdata.prefix("new_prefix_") default is "localdata_cookie_" </p>
+      <p><strong>Read</strong> - <span class="mark">$.localdata("name");</span> </p>
+      <p><strong>Delete One Item By Key</strong> - <span class="mark">$.localdata.remove("name");</span> or $.localdata("name",null,{expires:-1}); </p>
+      <p><strong>Delete entire cookie</strong> - <span class="mark">$.localdata.clear();</span> </p>
+      <p><strong>Count Stored Items</strong> - <span class="mark">$.localdata.count();</span> </p>
+      <p><strong>Force Reload</strong> - <span class="mark">$.localdata.reload();</span> </p>
+      <p><strong>Get/Set cookie configuration</strong> - <span class="mark">$.localdata.config()</span> and <span class="mark">$.localdata.config({expires: 'in days', path: 'your new path', domain: 'domain', 'secure': true or false})</span> defaults are expires: 365, path: '/', domain: '', 'secure': ''</p>
+      <p><strong>Get/Set cookie prefix</strong> - <span class="mark">$.localdata.prefix()</span> and <span class="mark">$.localdata.prefix("new_prefix_")</span> default is "localdata_cookie_" </p>
       
-      <input type="text" id="userInput" style="width:160px;" /><input id="write_to_local" type="button" value="write this to localdata" style="cursor:pointer; margin-left:10px;" />
-
-      <pre id="result">
+      
+	
   
-      </pre>
-      <h3>PHP: Sample usage for localdata.php</h3>
-      <p><strong>Include</strong> - include('localdata.php'); <br />
-      <p><strong>Create Object</strong> - $localdata = localdata::get(); <br />
-      <p><strong>Store</strong> - $localdata("name", "value"); or  $localdata->name = "value";<br />
+      
+      <h2>PHP: Sample usage for localdata.php</h2>
+      <p><strong>Include</strong> - <span class="mark">include('localdata.php');</span> <br />
+      <p><strong>Create Object</strong> - <span class="mark">$localdata = localdata::get();</span> <br />
+      <p><strong>Store</strong> - <span class="mark">$localdata("name", "value");</span> or  <span class="mark">$localdata->name = "value";</span><br />
       value can be integer, string, object, array <br />
-      $localdata("name", [1,2,3,4,5]); <br />
-      $localdata("name", {name: "John Dow", email: "john@company.com"}); </p><br />
-      <p><strong>Read</strong> - $localdata("name"); or $localdata->name</p>
-      <p><strong>Delete One Item By Key</strong> - $localdata->remove("name"); </p>
-      <p><strong>Delete entire cookie</strong> - $localdata->clear(); </p>
-      <p><strong>Count Stored Items</strong> - $localdata->count(); </p>
-      <p><strong>Get/Set cookie configuration</strong> - $localdata->config() and $localdata->config(Array('expires' => 'in days', 'path' => 'your new path', 'domain' => 'domain', 'secure' => true or false}) defaults are 'expires' => 365, 'path' => '/', 'domain' => NULL, 'secure' => NULL</p>
-      <p><strong>Get/Set cookie prefix</strong> - $localdata->prefix() and $localdata->prefix("new_prefix_") default is "localdata_cookie_" </p>
-      <pre id="result">
+      $localdata("name", array(1,2,3,4,5)); <br />
+      $localdata("name", array("name" => "John Dow", "email" => "john@company.com")); </p><br />
+      <p><strong>Read</strong> - <span class="mark">$localdata("name");</span> or <span class="mark">$localdata->name</span></p>
+      <p><strong>Delete One Item By Key</strong> - <span class="mark">$localdata->remove("name");</span> </p>
+      <p><strong>Delete entire cookie</strong> - <span class="mark">$localdata->clear();</span> </p>
+      <p><strong>Count Stored Items</strong> - <span class="mark">$localdata->count();</span> </p>
+      <p><strong>Get/Set cookie configuration</strong> - <span class="mark">$localdata->config()</span> and <span class="mark">$localdata->config(Array('expires' => 'in days', 'path' => 'your new path', 'domain' => 'domain', 'secure' => true or false})</span> defaults are 'expires' => 365, 'path' => '/', 'domain' => NULL, 'secure' => NULL</p>
+      <p><strong>Get/Set cookie prefix</strong> - <span class="mark">$localdata->prefix()</span> and <span class="mark">$localdata->prefix("new_prefix_")</span> default is "localdata_cookie_" </p>
+      <input type="text" id="userInput" style="width:160px;" /><input id="write_to_local" type="button" value="write this to localdata" style="cursor:pointer; margin-left:10px;" /><h4>Local Data Object</h4><pre id="before_result"></pre>
+      <h4>Local Data Object After Modification from Javascript</h4><pre id="result"></pre><h4>Local Data Object After Modification from PHP</h4><pre id="php_result">
   <?php
   include('localdata.php');
   $localdata = localdata::get();
+  $master_object = $localdata("master_object");
+  $master_object['php_data'] = array("name" => "John Dow", "email" => "john@company.com", "PHP-rand" => rand(1,1000000));
+  $localdata("master_object", $master_object);
   print_r( $localdata("master_object") );
   ?>
       </pre>
@@ -538,6 +549,10 @@ function makeIsoDate(date_obj)
 
 $(function()
 {
+	var before_str = dump($.localdata('master_object'));
+	
+	$("#before_result").html("Localdata Config: \n"+(dump($.localdata.config()))+"\n $.localdata('master_object') = :\n"+before_str);
+	
 	var array_1 = [];
 	var array_2 = [];
 	var array_3 = [];
