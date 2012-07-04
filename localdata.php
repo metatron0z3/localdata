@@ -1,5 +1,5 @@
 <?php
-/*
+/* 
  * localdata.php
  *
  * @author Pavel Kukov
@@ -195,7 +195,7 @@ class localdata
 			$cookies = str_split($this->cookie_string.'__END__', 4096);
 			foreach($cookies as $k=>$cookie_content)
 			{
-				setcookie($this->cookie_prefix.$k, $cookie_content, time() + (86400 * $this->cookie_livetime_in_days), "/");
+				setcookie($this->cookie_prefix.$k, $cookie_content, time() + (86400 * $this->cookie_default_options['expires']), $this->cookie_default_options['path'], $this->cookie_default_options['domain'], $this->cookie_default_options['secure']);
 			}
 		}
 		else 
